@@ -1,0 +1,92 @@
+
+.SignUpOutterTag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    /* background-color: red; */
+}
+
+.SignUpTag{
+    border-radius: 10px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: blue; */
+}
+.SignUp-header{
+    width: 100%;
+    /* justify-content: center; */
+    text-align: center;
+    color: white;
+    font-size: calc(10px + 3vmin);
+}
+.SignUp-logo-css{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+.SignUp-inputTag{
+    margin: 3% 3% 0% 3%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+
+input[type=Submit]{
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px;
+    height: 5vh;
+    margin-top: 2%;
+    font-size: calc(3px + 2vmin);
+}
+.LoginLabelTag{
+    margin: 5% 8% 0% 8%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+    .SignUpTag{
+        width: 60%;
+        height: 73vh;
+    }
+    .SignUpOutterTag{
+        height: 85vh;
+    }
+
+}
+@media screen and (min-width: 900px) {
+    .SignUpTag{
+        width: 45%;
+        height: 70vh;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .SignUpTag{
+        width: 35%;
+        height: 73vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SignUpTag{
+        width: 98%;
+        height: 68vh;
+    }
+    .SignUpOutterTag{
+        height: 85vh;
+    }
+
+ 
+  }
+
+ .sign-up-btn-css{
+      color: black;
+      text-decoration: none;
+  }

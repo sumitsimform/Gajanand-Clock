@@ -1,0 +1,66 @@
+.outterTabelTag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    width: 100%;
+    /* background-color: bisque; */
+}
+.tableTag{
+    height: 45vh;
+    background-color: darkgray;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -webkit-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+
+}
+label{
+    font-size: calc(8px + 2vmin);
+}
+.td{
+    text-align: left;
+}
+.errorOutterTag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    width: 100%;
+}
+.errorTag{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    justify-content: center;
+    height: 40vh;
+    background-color: darkgray;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -webkit-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+}
+.errorLabel{
+    color: red;
+    font-size: calc(20px + 2vmin);
+}
+
+
+
+  @media screen and (min-width: 760px) {
+    .formTag{
+        width: 30%;
+  }
+  .errorTag{
+    width: 30%;
+  }
+}
+/* @media screen and (max-width: 760px) {
+    .formTag{
+        width: 100%;
+  }
+
+} */

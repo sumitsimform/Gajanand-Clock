@@ -1,0 +1,270 @@
+.ContactUs-body{
+    background-color: #ffffff;
+    height: 100vh;
+    padding: 2% 5% 2% 5%;
+    font-family: 'Montserrat', sans-serif;
+}
+.ContactUs-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    margin-top: 2%;
+}
+.ContactUs-header-text{
+    font-size: calc(20px + 2vmin);
+}
+.ContactUs-tag{
+    display: flex;
+    flex-direction: row;
+    height: 75vh;
+    /* background-color: aqua; */
+}
+.address-tag{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.address-inner-tag{
+    height: 60vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 5%;
+}
+.address-header{
+    font-size: 1.8vw;
+    margin-left: 6%;
+}
+.address{
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+}
+.icon-tag{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-css{
+    width: 50%;
+    height: 50%;
+}
+.adress-text-tag{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.text{
+    font-size: 1vw;   
+    line-height: 1.2;
+    font-weight: bold;
+}
+.text-header{
+    font-size: 1.4vw;    
+}
+.message-tag{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message-inner-tag{
+    height: 60vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+}
+.form-tag{
+    display: flex;
+    height: 45vh;
+    justify-content: center;
+    flex-direction: column;
+}
+.message-tag-header{
+    font-size: 1.8vw;
+}
+.decoration{
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+.header-tag{
+    height: 10vh;
+}
+
+@media screen and (max-width: 600px) {
+
+    .ContactUs-tag{
+        flex-direction: column;
+    }
+    .address-tag{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .address-inner-tag{
+        height: 60vh;
+        width: 80%;
+    }
+    .address{
+        height: 13vh;
+    }
+    .icon-tag{
+        width: 30%;
+        height: 100%;
+    }
+    .address-header{
+        font-size: 6vw;
+        margin-left: 0%;
+    }
+    .text-header{
+        font-size: 5vw;    
+    }
+    .text{
+        font-size: 3.8vw; 
+    }   
+    .icon-css{
+        width: 50%;
+        height: 50%;
+    }
+    .address-inner-tag{
+        width: 100%;
+        padding: 5%;
+    }
+    .message-tag-header{
+        font-size: 6vw;
+    }
+    .message-inner-tag{
+        width: 90%;
+        padding: 0%;
+        height: 50vh;
+    }
+    .message-tag{
+        width: 100%;
+        padding: 5%;
+    }
+    .message-inner-tag{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0%;
+        
+    }
+    .form-tag{
+        display: flex;
+        height: 60vh;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    .header-tag{
+        height: 10vh;
+    }
+    
+}
+ @media screen and (min-width: 600px) {
+    .address-header{
+        font-size: 3.5vw;
+    }
+    .text-header{
+        font-size: 2.8vw;    
+    }
+    .text{
+        font-size: 1.9vw;   
+        line-height: 1.2;
+    }   
+    .icon-css{
+        width: 100%;
+        height: 100%;
+    }
+    .address-inner-tag{
+        width: 100%;
+        padding: 5%;
+    }
+    .message-tag-header{
+        font-size: 3.5vw;
+    }
+    .message-inner-tag{
+        width: 90%;
+    }
+
+}
+@media only screen and (min-width: 768px) {
+    .address-header{
+        font-size: 3vw;
+    }
+    .text-header{
+        font-size: 2.4vw;    
+    }
+    .text{
+        font-size: 1.8vw;   
+        line-height: 1.2;
+    }   
+    .icon-css{
+        width: 80%;
+        height: 80%;
+    }
+    .address-inner-tag{
+        width: 100%;
+        padding: 5%;
+    }
+    .message-tag-header{
+        font-size: 3vw;
+    }
+    .message-inner-tag{
+        width: 90%;
+    }
+}
+@media screen and (min-width: 900px) {
+    .address-header{
+        font-size: 2.5vw;
+    }
+    .text-header{
+        font-size: 2vw;    
+    }
+    .text{
+        font-size: 1.5vw;   
+        line-height: 1.2;
+    }   
+    .icon-css{
+        width: 75%;
+        height: 75%;
+    }
+    .address-inner-tag{
+        width: 100%;
+        padding: 5%;
+    }
+    .message-tag-header{
+        font-size: 2.5vw;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .address-header{
+        font-size: 1.8vw;
+    }
+    .text-header{
+        font-size: 1.4vw;    
+    }
+    .text{
+        font-size: 1vw; 
+    }   
+    .icon-css{
+        width: 50%;
+        height: 50%;
+    }
+    .address-inner-tag{
+        width: 80%;
+        padding: 5%;
+    }
+    .message-tag-header{
+        font-size: 1.8vw;
+    }
+} 

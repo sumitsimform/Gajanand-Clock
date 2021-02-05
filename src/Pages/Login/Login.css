@@ -1,0 +1,97 @@
+
+.Login-body{
+    background-color: black;
+}
+
+.tabelOutterTag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: red; */
+}
+.tabelTag{
+    border-radius: 10px;
+    height: 05vh;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    /* background-color: red; */
+}
+.form-header{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: calc(10px + 3vmin);
+}
+.logo-css{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+.inputTag{
+    margin: 3% 8% 0% 8%;
+    display: flex;
+    /* height: 6vh; */
+    align-items: flex-start;
+    flex-direction: column;
+}
+.label-css{
+    color: white;
+}
+
+.inputField{
+    /* padding:2%; */
+    color: white;
+}
+input[type=Submit]{
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px;
+    height: 5vh;
+    margin-top: 2%;
+    font-size: calc(3px + 2vmin);
+}
+.signUpLabelTag{
+    margin: 5% 8% 0% 8%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* .signUpLabel{
+    font-size: calc(7px + 1vmin);
+} */
+@media screen and (min-width: 600px) {
+    .tabelTag{
+        width: 60%;
+        height: 55vh;
+    }
+
+}
+@media screen and (min-width: 900px) {
+    .tabelTag{
+        width: 45%;
+        height: 55vh;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .tabelTag{
+        width: 30%;
+        height: 55vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .tabelTag{
+        width: 95%;
+        height: 50vh;
+    }
+
+ 
+  }
+
+ .sign-up-btn-css{
+      color: black;
+      text-decoration: none;
+  }
