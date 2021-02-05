@@ -1,11 +1,11 @@
 import React from 'react';
 import './AddClockPhoto.css';
-import { storage , store , timestamp  } from '../../Components/firebase';
+import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
-import history from '../../Components/history';
+import history from '../../Components/History';
 import AddPhotoHeader from './AddPhotoHeader';
 import Swal from 'sweetalert2';
 const types = ['image/png' , 'image/jpeg'];

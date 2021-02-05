@@ -1,7 +1,7 @@
 import React , { useState }  from 'react';
 import './Login.css'; 
-import fire  from '../../Components/firebase';
-import history from '../../Components/history';
+import fire  from '../../Components/Firebase';
+import history from '../../Components/History';
 import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Avatar from '@material-ui/core/Avatar';

@@ -5,12 +5,12 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import history from './Components/history';
+import history from './Components/History';
 import Loader from './Components/Loader/LoaderModal';
 const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/UserStatus'));
 const Contact = React.lazy(() => import('./Pages/content/content'));
-const AddClockPhoto = React.lazy(() => import('./Pages/addPhoto/AddClockPhoto'));
-const AddFramePhoto = React.lazy(() => import('./Pages/addPhoto/AddFramePhoto'));
+const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
+const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
 
 class App extends React.Component{
   render(){

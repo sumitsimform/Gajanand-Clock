@@ -2,7 +2,7 @@ import React , {Suspense } from 'react';
 import Loader from '../../Components/Loader/LoaderModal';
 // import ShowClockImages from '../ShowClockImages/ShowClockImages';
 // import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
-const Header = React.lazy(() => import('../../Components/Header/header.js'));
+const Header = React.lazy(() => import('../../Components/Header/Header.js'));
 const Home = React.lazy(() => import('../Home/Home'));
 const AboutOwner = React.lazy(() => import('../AboutOwner/AboutOwner'));
 const Service = React.lazy(() => import('../Service/Service'));

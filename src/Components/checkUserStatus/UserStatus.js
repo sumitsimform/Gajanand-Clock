@@ -1,10 +1,10 @@
 import React from 'react';
-import firebase from '../firebase';
-import history from '../history';
+import firebase from '../Firebase';
+import history from '../History';
 import LoaderModal from '../Loader/LoaderModal';
 import { useDispatch , useSelector } from 'react-redux';
 import { setLogin , setLogout} from '../action/setLogged';
-import './checkUserStatus.css';
+import './CheckUserStatus.css';
 
 
 function UserStatus() {

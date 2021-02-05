@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddFramePhoto.css';
-import { storage , store , timestamp  } from '../../Components/firebase';
+import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/AddAPhoto';
