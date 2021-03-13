@@ -73,7 +73,7 @@ function Header() {
         <div className='header-body'>
             {/* collapseOnSelect */}
             <Navbar fixed='top' expand="md" expanded={navExpanded} onToggle={checkExapnd}  className={navBar ? 'navbar active' : 'navbar'}>
-                <Brand  href="#Home">Header</Brand>
+                <Brand  href="#Home">Gajanand Clock</Brand>
                 <Toggle  aria-controls="responsive-navbar-nav" />
                 <Collapse id="responsive-navbar-nav">
                     <Nav >

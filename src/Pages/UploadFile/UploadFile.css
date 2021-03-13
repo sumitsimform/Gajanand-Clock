@@ -1,0 +1,111 @@
+.upload-header{
+    background-color: black;
+    color: white;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    /* margin: 30px auto 10px; */
+    text-align: center;
+    /* background-color: red; */
+  }
+  label input{
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+  label{
+    /* display: block; */
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    margin: 10px auto;
+    /* line-height: 30px; */
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+  }
+  label span {
+      margin-top: -10%;
+  }
+  label:hover{
+    background: var(--primary);
+    color: white;
+  }
+
+  h4{
+      margin-top: 5%;
+  }
+  .output{
+    /* height: 60px; */
+    font-size: 0.8rem;
+    margin: 0% 10%;
+    /* background-color: aqua; */
+  }
+
+  .progress-bar{
+    height: 5px;
+    background: var(--primary);
+    margin-top: 20px;
+  }
+  .img-grid{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-gap: 40px; */
+    /* background-color: #0575E6; */
+  }
+  .img-wrap{
+    overflow: hidden;
+    padding: 65% 0;
+    position: relative;
+    width: 100%;
+    margin: 2%;
+  }
+  .img-wrap img{
+    height: 70%;
+    /* min-width: 100%; */
+    /* max-width: 100%; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    transition: .5s ease-in-out;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(57deg, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(57deg, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+  }
+ 
+  .backdrop{
+    position: fixed;
+    top: 0;
+    left:  0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+}
+
+.backdrop img {
+    display: block;
+    max-width: 80%;
+    max-height: 60%;
+    margin: 60px auto;
+    box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+    /* background-color: aqua; */
+    border-radius: 15px;
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(57deg, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(57deg, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

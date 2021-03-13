@@ -1,7 +1,7 @@
 import React , {Suspense } from 'react';
 import Loader from '../../Components/Loader/LoaderModal';
-// import ShowClockImages from '../ShowClockImages/ShowClockImages';
-// import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
+import ShowClockImages from '../ShowClockImages/ShowClockImages';
+import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
 const Header = React.lazy(() => import('../../Components/Header/Header.js'));
 const Home = React.lazy(() => import('../Home/Home'));
 const AboutOwner = React.lazy(() => import('../AboutOwner/AboutOwner'));
@@ -26,12 +26,12 @@ function Content(props) {
             <section id='Service'>
                 <Service />
             </section>
-            {/* <section id='ShowClockImages'>
+            <section id='ShowClockImages'>
                 <ShowClockImages />
             </section>
             <section id='ShowFrameImages'>
                 <ShowFrameImages />
-            </section>  */}
+            </section> 
             <section id='ContactUs'>
                 <ContactUs />
             </section>

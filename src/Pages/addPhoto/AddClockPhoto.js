@@ -31,7 +31,7 @@ class AddPhoto extends React.Component {
             this.setState({url:'',isUpload:1});
             let url='';
             const image = e.target.files[0];
-
+            console.log('IMAGE====>',image.name);
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             const collectionRef = store.collection('images');
             uploadTask.on('state_changed',
@@ -57,8 +57,7 @@ class AddPhoto extends React.Component {
                         this.setState({imageId : docRef.id});
                         console.log('IDDD =>',this.state.imageId);
                     }
-                );
-                alert('Image successfully upload...')
+                );  
                 Swal.fire(
                     'Clock Image upload',
                     'Your Clock Image successfully upload...',
