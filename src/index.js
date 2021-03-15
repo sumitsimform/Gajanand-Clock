@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+// import UploadFile from './Pages/UploadFile/UploadFile';
+// import MultiFacetedFrame from './Pages/MultiFacetedFrame/MultiFacetedFrame';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import isLoaggedReducer from './Components/reducer/isLogged';
@@ -17,6 +19,8 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>
+  // <UploadFile />
+  // <MultiFacetedFrame />
   ,
   document.getElementById('root')
 );

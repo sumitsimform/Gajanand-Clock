@@ -1,0 +1,27 @@
+.outter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    /* background-color: rgb(82, 88, 94); */
+}
+
+.outter img {
+    height: 30vh;
+    width: 30vh;
+}
+.frame-tag{
+    width: 80vh;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+.frame-tag img{
+    height: 10vh;
+    width: 10vh;
+    margin: 5px;
+    
+}

@@ -24,8 +24,31 @@ function ShowClockImages() {
             <div className='show-clock-tag'>
                 <div className='clock-img-grid'>
                     { docs && docs.slice(0,numOfImg).map(doc => (
-                        <div className='img-wrap' key={doc.id}>
-                            <img src={doc.url} alt='uploaded pic' />
+                        // <div className='img-wrap' key={doc.id}>
+                        //     <img src={doc.url} alt='uploaded pic' />
+                        // </div>
+                        <div className="card_layout"  key={doc.id}>
+                            {
+                                console.log('id===>',doc.url)
+                            }
+                            <div className="card__inner">
+                                <div className="card__face card__face--front ">
+                                    <img src={doc.url} alt='uploaded pic' />
+                                    {/* <img src="./logo192.png" alt="" className="pp" /> */}
+                                </div>
+                                <div className="card__face card__face--back">
+                                    <div className="card__content">
+                                        <div className="card__header">
+                                            <img src={doc.url} alt='uploaded pic' />
+                                            {/* <img src="./logo192.png" alt="" className="pp" /> */}
+                                            {/* <h2>Tyler Potts</h2> */}
+                                        </div>
+                                        <div className="card__body">
+                                            <h3>Clock Number</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                 ))}
                 </div>
