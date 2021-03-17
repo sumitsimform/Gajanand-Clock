@@ -122,7 +122,7 @@ class AddPhoto extends React.Component {
         const {isUpload, selectFile, isDelete, url,productName,productDetail,productPrice,productType} = this.state;
         return(
             <>
-                <AddPhotoHeader text='Add Clock Photo' clock={true} />  
+                <AddPhotoHeader text='Add Product' clock={true} />  
                 <div className='addPhoto-body'>
                     {/* <div className='addPhoto-outter-tag'>              
                         <div className='upload-img-tag'>
@@ -227,8 +227,8 @@ class AddPhoto extends React.Component {
                                 <select 
                                     className="form-select form-select-lg  mb-2" 
                                     aria-label=".form-select-lg example" 
-                                    // value={productType} 
-                                    defaultValue={productType}
+                                    value={productType} 
+                                    // defaultValue={productType}
                                     onChange={(e)=>this.setState({productType:e.target.value})} 
                                 >
                                     <option value=''>Select Product Type</option>

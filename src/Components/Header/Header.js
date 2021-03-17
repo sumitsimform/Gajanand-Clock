@@ -83,8 +83,8 @@ function Header() {
                         { isLogin 
                         ?
                         <Nav>
-                        <Link onSelect={checkExapnd} onClick={AddClock} href="/AddClockImages">Add Clock</Link>
-                        <Link onSelect={checkExapnd} onClick={AddFrame} href="/AddFrameImages">Add Frame</Link>
+                        <Link onSelect={checkExapnd} onClick={AddClock} href="/AddClockImages">Add Product</Link>
+                        {/* <Link onSelect={checkExapnd} onClick={AddFrame} href="/AddFrameImages">Add Frame</Link> */}
                         </Nav>
                         :
                          null
