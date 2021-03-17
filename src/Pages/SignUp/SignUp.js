@@ -4,10 +4,9 @@ import fire  from '../../Components/Firebase';
 import history from '../../Components/History';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { FormControl , FormLabel } from 'react-bootstrap';
 import Link from '@material-ui/core/Link';
+import Swal from 'sweetalert2';
 import LoaderModal from '../../Components/Loader/LoaderModal';
 
 const  SignUp = () => {
@@ -21,11 +20,16 @@ const  SignUp = () => {
     
     function  submitSignUp(){
         if( !(Pass === Confirm_Pass) ){
-            alert('Password Not Match...');
-            Confirm_Pass = ''
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Not Match...',
+              }).then(()=>{
+                setPass('')
+                setRePass('')
+              })
         }else{
             setIsSignUp(1); 
-            console.log('=>',Pass,'=>',Confirm_Pass,'=>',Email,'=>',Name);
             fire.auth().createUserWithEmailAndPassword(Email,Pass)
             .then(
             async function () {
@@ -36,137 +40,85 @@ const  SignUp = () => {
                     Email : Email 
             }).then((data)=>{
                      //success callback
-                    
-                     alert('Sign Up Successful And Verification Link Sent In Your Email...')
-                    // this.setState({Confirm_password:'',password:'',Name:'',email:''});
-                    // Confirm_Pass='';Pass='';Name='';Email='';
+                     Swal.fire(
+                        'Sign Up',
+                        'Sign Up Successful And Verification Link Sent In Your Email...',
+                        'success'
+                      ).then(()=>{
+                          setEmail('');setName('');
+                          setPass('');setRePass('');
+                      })
                     setIsSignUp(null);
                     history.push({ 
                             pathname: '/login',
                             });
                     }).catch((error)=>{
                             console.log('error ' , error)
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: `${error}`,
+                              })
+                              setIsSignUp(null);
                         })
             }).catch(function(error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: `${error}`,
+                                })
                                 console.log(error);
                                 setIsSignUp(null);
                         });
             })
             .catch((error) => {
-                console.log('->',error);
-                alert(error.message)});
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error}`,
+                  })
+                  setIsSignUp(null);
+                // console.log('->',error);
+            });
                 // setIsSignUp(null);
         }
     
 }
-        const CssTextField = withStyles((theme)=>({
-            root: {
-              '& label.Mui-focused': {
-                color: 'white',
-              },
-              '& .MuiInput-underline:after': {
-                borderBottomColor: 'yellow',
-              },
-              '.MuiInputBase-root':{
-                // '& fieldset': {
-                    color:'white'
-                //   },
-              },
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  
-                  borderColor: '#737373'
-                },
-                '&:hover fieldset': {
-                    borderColor: 'white'
-                },
-                '&.Mui-focused fieldset': {
-                    borderColor: theme.palette.primary.main,
-                    opacity:1
-                },
-              },
-            },
-          }))(TextField);
         
         return(
-            <div>
+            <div style={{height:'100vh'}}>
                 <div className="SignUpOutterTag" >  
-                {/* <div className="signUpInnerTag"> */}
                     <div className='SignUpTag'>
-                        
                         <div className='SignUp-logo-css'>
-                        <Avatar style={{
-                                color:'black',
-                                backgroundColor:'#f48fb1',
-                                height:'50px',
-                                width:'50px'
-                                }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
+                            <Avatar style={{
+                                    color:'black',
+                                    backgroundColor:'#f48fb1',
+                                    height:'50px',
+                                    width:'50px'
+                                    }}>
+                                <LockOutlinedIcon />
+                            </Avatar>
                         </div>
-
                         <label className='SignUp-header'>Sign Up</label>
-                        <div className='SignUp-inputTag'>
-                            <CssTextField
-                                defaultValue=''
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="Name"
-                                label="Full Name"
-                                type="text"
-                                onChange={(event, value) => setName(value)}
-                                InputLabelProps={{style:{color:'white',opacity:0.5}}}
-                                InputProps={{ style:{color:"white"} }}
-                                />
+                        <div className='inputTag'>
+                            <FormLabel className='label-css'>Full Name</FormLabel>
+                            <FormControl value={Name} onChange={(e)=> setName(e.target.value)} type="name" size='lg' placeholder="Full Name" />
                         </div>
-                        <div className='SignUp-inputTag'>
-                            <CssTextField
-                                defaultValue=''
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="email"
-                                label="Email"
-                                type="email"
-                                onChange={(event, value) => setEmail(value)}
-                                InputLabelProps={{style:{color:'white',opacity:0.5}}}
-                                InputProps={{ style:{color:"white"} }}
-                                />
+                        <div className='inputTag'>
+                            <FormLabel className='label-css'>Email</FormLabel>
+                            <FormControl value={Email} onChange={(e)=> setEmail(e.target.value)} type="email" size='lg' placeholder="Email" />
                         </div>
-                        <div className='SignUp-inputTag'>
-                            <CssTextField
-                                defaultValue=''
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                onChange={(event, value) => setPass(value)}
-                                InputLabelProps={{style:{color:'white',opacity:0.5}}}
-                                InputProps={{ style:{color:"white"} }}
-                                />
+                        <div className='inputTag'>
+                            <FormLabel className='label-css'>Password</FormLabel>
+                            <FormControl value={Pass} onChange={(e)=> setPass(e.target.value)} type="password" size='lg' placeholder="Password" />
                         </div>
-                        <div className='SignUp-inputTag'>
-                            <CssTextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Confirm Password"
-                                type="password"
-                                autoComplete="current-password"
-                                onChange={(event, value) => setRePass(value)}
-                                InputLabelProps={{style:{color:'white',opacity:0.5}}}
-                                InputProps={{ style:{color:"white"} }}
-                                />
+                        <div className='inputTag'>
+                            <FormLabel className='label-css'>Confirm Password</FormLabel>
+                            <FormControl value={Confirm_Pass} onChange={(e)=> setRePass(e.target.value)} type="password" size='lg' placeholder="Password" />
                         </div>
-                        <div className='SignUp-inputTag'>
-                            <Button variant="contained" fullWidth={true} color="primary" onClick={submitSignUp}>
-                                SIGN UP
-                            </Button>
+                        <div className='inputTag' style={{marginTop:'5%'}}>
+                            <button class="btn btn-primary" style={{width:'100%'}} type="button" onClick={submitSignUp}>SIGN UP</button>
                         </div>
                         <div className='LoginLabelTag'>
                             <Link href="/login" variant="body2">
@@ -175,14 +127,9 @@ const  SignUp = () => {
                         </div>
                     </div>
                 </div>
-                {/* </div> */}
                 { isSignUp && <LoaderModal text='Sign Up Processing...'  /> }
             </div>
-            
         );
-    
-
-    
 }
 
 export default SignUp;

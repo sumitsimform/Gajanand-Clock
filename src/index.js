@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 // import UploadFile from './Pages/UploadFile/UploadFile';
 // import MultiFacetedFrame from './Pages/MultiFacetedFrame/MultiFacetedFrame';
+import SignUp from './Pages/SignUp/SignUp'
+import Login from './Pages/Login/Login'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import isLoaggedReducer from './Components/reducer/isLogged';
@@ -19,7 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>
-  // <UploadFile />
+  // <SignUp />
   // <MultiFacetedFrame />
   ,
   document.getElementById('root')

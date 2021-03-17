@@ -1,6 +1,7 @@
 .addPhoto-body{
-    /* background-color: aqua; */
+    background-color: black;
     height: 100vh;
+    color: white;
     padding: 2% 5% 2% 5%;
 }
 .addPhoto-header{

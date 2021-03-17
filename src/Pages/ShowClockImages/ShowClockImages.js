@@ -29,7 +29,7 @@ function ShowClockImages() {
                         // </div>
                         <div className="card_layout"  key={doc.id}>
                             {
-                                console.log('id===>',doc.url)
+                                console.log('id===>',doc)
                             }
                             <div className="card__inner">
                                 <div className="card__face card__face--front ">
@@ -45,6 +45,7 @@ function ShowClockImages() {
                                         </div>
                                         <div className="card__body">
                                             <h3>Clock Number</h3>
+                                            <button className='btn btn-primary' style={{width:'100%'}} onClick={()=>console.log('ADD2')}>ADD TO CART</button>
                                         </div>
                                     </div>
                                 </div>

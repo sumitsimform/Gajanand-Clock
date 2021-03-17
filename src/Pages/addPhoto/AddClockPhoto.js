@@ -8,7 +8,9 @@ import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 import history from '../../Components/History';
 import AddPhotoHeader from './AddPhotoHeader';
 import Swal from 'sweetalert2';
+import { FormControl , FormLabel } from 'react-bootstrap';
 const types = ['image/png' , 'image/jpeg'];
+
 
 
 class AddPhoto extends React.Component {
@@ -18,6 +20,11 @@ class AddPhoto extends React.Component {
              pictures: [] ,
              image : '',
              url : '',
+             productName:'',
+             productDetail:'',
+             productPrice:0,
+             productType:'',
+             selectFile:'',
              imageId:null,
              isUpload:null,
              isDelete:null
@@ -25,12 +32,14 @@ class AddPhoto extends React.Component {
     }
 
 
-      uploadImg = (e) => {
-        const selected = e.target.files?.[0];
-        if(selected && types.includes(selected.type)){
+      uploadImg = () => {
+          
+        console.log('NAme=>',this.state.productName,'Price=>',this.state.productPrice,'Type=>',this.state.productType,'Details=>',this.state.productDetail,'SelectFile==>',this.state.selectFile);
+        const {selectFile} = this.state;
+        if(selectFile && types.includes(selectFile.type)){
             this.setState({url:'',isUpload:1});
             let url='';
-            const image = e.target.files[0];
+            const image = selectFile;
             console.log('IMAGE====>',image.name);
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             const collectionRef = store.collection('images');
@@ -52,7 +61,8 @@ class AddPhoto extends React.Component {
                     // alert('Image successfully upload...')
                 })
                 const createAt = timestamp();
-                collectionRef.add({ url , createAt }).then(
+                const {productName, productDetail, productPrice, productType} = this.state
+                collectionRef.add({ url , createAt, productName, productDetail, productPrice, productType }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
                         console.log('IDDD =>',this.state.imageId);
@@ -112,7 +122,7 @@ class AddPhoto extends React.Component {
             <>
                 <AddPhotoHeader text='Add Clock Photo' clock={true} />  
                 <div className='addPhoto-body'>
-                    <div className='addPhoto-outter-tag'>              
+                    {/* <div className='addPhoto-outter-tag'>              
                         <div className='upload-img-tag'>
                             <input 
                                 type="file" 
@@ -149,7 +159,35 @@ class AddPhoto extends React.Component {
                                     </Button>
                             </div>
                         </div>
+                    </div> */}
+                    <div>
+                        <FormLabel className='label-css' >Product Name</FormLabel>
+                        <FormControl type="text" size='lg' placeholder="" onChange={(e)=>this.setState({productName:e.target.value})} />                            
                     </div>
+                    <div className='mt-2'>
+                        <FormLabel className='label-css' >Product Details</FormLabel>
+                        <FormControl type="text" size='lg' placeholder="" onChange={(e)=>this.setState({productDetail:e.target.value})}/>                            
+                    </div>
+                    <div className='mt-2'>
+                        <FormLabel className='label-css' >Product Type</FormLabel><br/>                    
+                        <select class="form-select form-select-lg  mb-2" aria-label=".form-select-lg example" onChange={(e)=>this.setState({productType:e.target.value})}>
+                            <option selected>Select Product Type</option>
+                            <option value="Clock">Clock</option>
+                            <option value="Frame">Frame</option>
+                        </select>
+                    </div>
+                    <div className='mt-2'>
+                        <FormLabel className='label-css' >Product Price</FormLabel>
+                        <FormControl type="number" size='lg' placeholder="" onChange={(e)=>this.setState({productPrice:e.target.value})}/>                            
+                    </div>
+                    <div className='mt-4'>
+                        {/* <FormLabel className='label-css' >Product Image File</FormLabel> */}
+                        <FormControl type="file" style={{color:'white'}} size='lg' placeholder="" onChange={(e)=>this.setState({selectFile:e.target.files?.[0]}) } />                            
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-primary" style={{width:'100%'}} type="button" onClick={this.uploadImg}>ADD</button>
+                    </div>
+                    
                     { isUpload && <LoaderModel text='Photo Uploading...'  /> }
                     { isDelete && <LoaderModel text='Photo Deleteing...'  /> }
                 </div>

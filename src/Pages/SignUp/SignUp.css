@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 85vh;
-    /* background-color: red; */
+    height: 100vh;
+    background-color: black;
 }
 
 .SignUpTag{
@@ -23,13 +23,17 @@
     font-size: calc(10px + 3vmin);
 }
 .SignUp-logo-css{
+    /* background-color: red; */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3%;
 }
 .SignUp-inputTag{
-    margin: 3% 3% 0% 3%;
+    /* margin: 3% 3% 0% 3%; */
+    margin-top: 5%;
+    /* background-color: aqua; */
+    width: 10vw;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -53,34 +57,37 @@ input[type=Submit]{
 
 @media screen and (min-width: 600px) {
     .SignUpTag{
-        width: 60%;
-        height: 73vh;
+        width: 70%;
+        height: 80vh;
+        
     }
     .SignUpOutterTag{
-        height: 85vh;
+        height: 100vh;
     }
 
 }
 @media screen and (min-width: 900px) {
     .SignUpTag{
-        width: 45%;
-        height: 70vh;
+        width: 50%;
+        height: 85vh;
     }
 }
 @media screen and (min-width: 1200px) {
     .SignUpTag{
-        width: 35%;
-        height: 73vh;
+        /* background-color: red; */
+        width: 43%;
+        height: 90vh;
     }
 }
 
 @media screen and (max-width: 600px) {
     .SignUpTag{
         width: 98%;
-        height: 68vh;
+        height: 80vh;
+        
     }
     .SignUpOutterTag{
-        height: 85vh;
+        height: 100vh;
     }
 
  
