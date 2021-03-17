@@ -4,7 +4,7 @@ import history from '../History';
 import LoaderModal from '../Loader/LoaderModal';
 import { useDispatch , useSelector } from 'react-redux';
 import { setLogin , setLogout} from '../action/setLogged';
-import './CheckUserStatus.css';
+import './checkUserStatus.css';
 
 
 function UserStatus() {
