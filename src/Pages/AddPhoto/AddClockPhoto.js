@@ -22,7 +22,7 @@ class AddPhoto extends React.Component {
              url : '',
              productName:'',
              productDetail:'',
-             productPrice:0,
+             productPrice:'',
              productType:'',
              selectFile:'',
              imageId:null,
@@ -33,7 +33,6 @@ class AddPhoto extends React.Component {
 
 
       uploadImg = () => {
-          
         console.log('NAme=>',this.state.productName,'Price=>',this.state.productPrice,'Type=>',this.state.productType,'Details=>',this.state.productDetail,'SelectFile==>',this.state.selectFile);
         const {selectFile} = this.state;
         if(selectFile && types.includes(selectFile.type)){
@@ -41,8 +40,8 @@ class AddPhoto extends React.Component {
             let url='';
             const image = selectFile;
             console.log('IMAGE====>',image.name);
-            const uploadTask = storage.ref(`images/${image.name}`).put(image);
-            const collectionRef = store.collection('images');
+            const uploadTask = storage.ref(`${this.state.productType}/${image.name}`).put(image);
+            const collectionRef = store.collection(`${this.state.productType}`);
             uploadTask.on('state_changed',
             (snapshot) => {
                 // progress function
@@ -53,7 +52,7 @@ class AddPhoto extends React.Component {
             },
             async () => {
                 // complete function
-                await storage.ref('images').child(image.name).getDownloadURL()
+                await storage.ref(`${this.state.productType}`).child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
                     url = imgUrl;
@@ -72,8 +71,11 @@ class AddPhoto extends React.Component {
                     'Clock Image upload',
                     'Your Clock Image successfully upload...',
                     'success'
-                  );
-                this.setState({isUpload:null});
+                  ).then(()=>{
+                    this.setState({isUpload:null,productName:'',productDetail:'',
+                    productType:'',productPrice:''});
+                    document.getElementById("uploadFile").value = "";
+                  });
             });
         }else{
             Swal.fire({
@@ -117,7 +119,7 @@ class AddPhoto extends React.Component {
     }
 
     render(){
-        const {isUpload , isDelete, url} = this.state;
+        const {isUpload, selectFile, isDelete, url,productName,productDetail,productPrice,productType} = this.state;
         return(
             <>
                 <AddPhotoHeader text='Add Clock Photo' clock={true} />  
@@ -160,7 +162,7 @@ class AddPhoto extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                    <div>
+                    {/* <div>
                         <FormLabel className='label-css' >Product Name</FormLabel>
                         <FormControl type="text" size='lg' placeholder="" onChange={(e)=>this.setState({productName:e.target.value})} />                            
                     </div>
@@ -182,10 +184,69 @@ class AddPhoto extends React.Component {
                     </div>
                     <div className='mt-4'>
                         {/* <FormLabel className='label-css' >Product Image File</FormLabel> */}
-                        <FormControl type="file" style={{color:'white'}} size='lg' placeholder="" onChange={(e)=>this.setState({selectFile:e.target.files?.[0]}) } />                            
+                        {/* <FormControl type="file" style={{color:'white'}} size='lg' placeholder="" onChange={(e)=>this.setState({selectFile:e.target.files?.[0]}) } />                            
                     </div>
                     <div class="mt-4">
                         <button class="btn btn-primary" style={{width:'100%'}} type="button" onClick={this.uploadImg}>ADD</button>
+                    </div> */} 
+                    
+                    <div className="container mt-5">
+                    <div className="w-75 mx-auto shadow p-5 bg-white">
+                        <h2 className="text-center mb-4">Add Product</h2>
+                        <div className="form-group">
+                            <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter Product Name"
+                            name="name"
+                            value={productName}
+                            onChange={(e)=>this.setState({productName:e.target.value})}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter Product Details"
+                            name="username"
+                            value={productDetail}
+                            onChange={(e)=>this.setState({productDetail:e.target.value})}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter Product Price"
+                            name="phone"
+                            value={productPrice}
+                            onChange={(e)=>this.setState({productPrice:e.target.value})}
+                            />
+                        </div>
+                        <div className="form-group">
+                                <select 
+                                    className="form-select form-select-lg  mb-2" 
+                                    aria-label=".form-select-lg example" 
+                                    // value={productType} 
+                                    defaultValue={productType}
+                                    onChange={(e)=>this.setState({productType:e.target.value})} 
+                                >
+                                    <option value=''>Select Product Type</option>
+                                    <option value="Clock">Clock</option>
+                                    <option value="Frame">Frame</option>
+                                </select>
+                        </div>
+                        <div className="form-group">
+                            <input 
+                                type="file" 
+                                id='uploadFile'
+                                style={{color:'black'}} 
+                                className="form-control-file" 
+                                onChange={(e)=>this.setState({selectFile:e.target.files?.[0]})} 
+                            />
+                        </div>
+                        <button className="btn btn-primary btn-block" onClick={this.uploadImg}>Add Product</button>
+                    </div>
                     </div>
                     
                     { isUpload && <LoaderModel text='Photo Uploading...'  /> }
