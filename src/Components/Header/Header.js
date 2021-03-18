@@ -17,22 +17,18 @@ function Header() {
     const [navBar,setNavBar] = useState(false);
     const [windowInnerWidth , setWindowInnerWidth] = useState(0);
     const [isAdmin,setIsAdmin] = useState(false)
-    const [webStorageAdmin,setWebStorageAdmin] = useState()
+    const [webStorageAdmin,setWebStorageAdmin] = useState(false)
     const isLogin = useSelector(state => state);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         const CurrentUser = fire.auth().currentUser;
         const isAdminConst = window.localStorage.getItem('isAdmin');
-        console.log('CurrentUser ===>',CurrentUser,webStorageAdmin,isAdminConst)
-        if(isAdminConst || (CurrentUser && (CurrentUser.uid==='XryKr3kHIdYbl8dmwccR23wmdop1'))){
-            // console.log('true ===============>',isAdminConst,'===',CurrentUser,'===',CurrentUser.uid)
-            console.log("true=>",(CurrentUser && (CurrentUser.uid==='XryKr3kHIdYbl8dmwccR23wmdop1')) || isAdminConst)
+        if( isAdminConst==='true' || (CurrentUser && (CurrentUser.uid==='XryKr3kHIdYbl8dmwccR23wmdop1'))){
             window.localStorage.setItem('isAdmin',true)
             setWebStorageAdmin(window.localStorage.getItem('isAdmin'))
             setIsAdmin(true)
         }else{
-            console.log('false ===============')
             window.localStorage.setItem('isAdmin',false)
             setWebStorageAdmin(window.localStorage.getItem('isAdmin'))
             setIsAdmin(false)
@@ -71,6 +67,8 @@ function Header() {
         fire.auth().signOut().then(() => {
             // Sign-out successful.
             window.localStorage.setItem('isAdmin',false)
+            setWebStorageAdmin(false)
+            setIsAdmin(false)
             Swal.fire(
                 'Sign-out...',
                 'Successful Sign-out...',
@@ -102,7 +100,6 @@ function Header() {
                         <Link onSelect={checkExapnd}  href="#Home">Home</Link>
                         <Link onSelect={checkExapnd}  href="#About">About</Link>
                         <Link onSelect={checkExapnd} href="#Service"  >Service</Link>
-                        {console.log('IN Render CurrentUser ===>',isAdmin,webStorageAdmin)}
                         { (isAdmin===true || webStorageAdmin===true) 
                         ?
                         <Nav>
