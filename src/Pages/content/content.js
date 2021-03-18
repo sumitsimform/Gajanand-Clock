@@ -26,13 +26,13 @@ function Content(props) {
             <section id='Service'>
                 <Service />
             </section>
-            <section id='ShowClockImages'>
+            {/* <section id='ShowClockImages'>
                 <ShowClockImages />
             </section>
             
             <section id='ShowFrameImages'>
                 <ShowFrameImages />
-            </section> 
+            </section>  */}
             <section id='ContactUs'>
                 <ContactUs />
             </section>

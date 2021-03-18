@@ -34,9 +34,9 @@ const Login = () => {
                         'Successful Login...',
                         'success'
                       ).then(()=>{
-                        if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
+                        // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
                             dispatch(setLogin());    
-                        }  
+                        // }  
                         history.push({pathname:'/home'});
                       })
                 }
