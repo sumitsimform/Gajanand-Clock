@@ -4,12 +4,12 @@ import useStore from '../../Components/hooks/useStore';
 import {Button} from 'react-bootstrap';
 import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';
-
+import history from '../../Components/History'
 function ShowClockImages() {
 
 
     const [numOfImg,setNumOfImg] = useState(5);
-    const { docs } = useStore('images');
+    const { docs } = useStore('Clock');
 
 
     const ShowMoreImg = () => {
@@ -45,7 +45,15 @@ function ShowClockImages() {
                                         </div>
                                         <div className="card__body">
                                             <h3>Clock Number</h3>
-                                            <button className='btn btn-primary' style={{width:'100%'}} onClick={()=>console.log('ADD2')}>ADD TO CART</button>
+                                            <button className='btn btn-primary' style={{width:'100%'}} 
+                                                onClick={
+                                                    ()=>{
+                                                        console.log('PROPS SEND=>',doc)
+                                                        history.push({
+                                                            pathname:'/EditProductDetails',
+                                                            state:{doc}
+                                                        })
+                                                    }}>ADD TO CART</button>
                                         </div>
                                     </div>
                                 </div>

@@ -11,6 +11,7 @@ const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/Us
 const Contact = React.lazy(() => import('./Pages/content/content'));
 const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
 const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
+const EditProductDetails = React.lazy(() => import('./Pages/EditProductDetails/EditProductDetails'));
 
 class App extends React.Component{
   render(){
@@ -33,6 +34,9 @@ class App extends React.Component{
             </Route>
             <Route  path="/AddFrameImages">
                 <AddFramePhoto  />
+            </Route>
+            <Route  path="/EditProductDetails">
+                <EditProductDetails  />
             </Route>
           </Switch>
         </Router>
