@@ -7,6 +7,7 @@ import App from './App';
 // import MultiFacetedFrame from './Pages/MultiFacetedFrame/MultiFacetedFrame';
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login'
+import Card from './Components/Card'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import isLoaggedReducer from './Components/reducer/isLogged';
