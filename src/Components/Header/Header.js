@@ -6,6 +6,7 @@ import   fire  from '../Firebase';
 import Swal from 'sweetalert2';
 import { useSelector , useDispatch } from 'react-redux';
 import { setLogout  } from '../action/setLogged';
+import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 const { Brand , Collapse , Toggle } = Navbar;
 const { Link } = Nav;
 
@@ -83,6 +84,9 @@ function Header() {
             console.log(error.message);
           });
     }
+    const GoToCart = () => {
+        history.push({pathname:'/Cart'});
+    }
     const AddClock = () => {
         history.push({pathname:'/AddClockImages'});
     }
@@ -111,10 +115,16 @@ function Header() {
                         }
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
-                        { isLogin  ? 
-                            <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link>                    
+                        { isLogin  ?
+                            <> 
+                            <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link>
+                             <div className='nav justify-content-end'>
+                             <Link onSelect={checkExapnd} onClick={GoToCart} href="/cart"><ShoppingCartSharpIcon /></Link>
+                            </div>
+                                                
+                            </>
                         :
-                            <Link onSelect={checkExapnd} onClick={goToLogin} href="/login">Login</Link>
+                            <Link onSelect={checkExapnd} onClick={goToLogin}>Login</Link>
                         }
                     </Nav>
                 </Collapse>

@@ -11,7 +11,7 @@ export default function ShowProductDetails() {
     const [numberOfProduct,setNumberOfProduct] = useState(1)
     const ProductObject =  location.state? location.state.state : {}
     const handleAddToCart = () =>{
-        history.push({pathname:'/Cart'})
+        // history.push({pathname:'/Cart'})
         const  CurrentUser = firebase.auth().currentUser;
         // console.log('==>',numberOfProduct , ' ==== ',CurrentUser)
         if(CurrentUser){

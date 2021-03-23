@@ -6,27 +6,30 @@ const [data,setData] = useState([])
 const [totalPrice,setTotalPrice] = useState(0)
     useEffect(() => {
         const  CurrentUser = firebase.auth().currentUser;
+        console.log('INNNNNNNN=>',CurrentUser)
         let total = 0
         if(CurrentUser){
             var starCountRef = firebase.database().ref(`Users/${CurrentUser.uid}/Cart`);
             starCountRef.on('value', (snapshot) => {
             setData(snapshot.val())
             console.log("DATA ==>",snapshot.val())
-            // updateStarCount(postElement, data);
+            if(snapshot.val() !== null){
+              console.log('==============');
               Object.values(snapshot.val()).map((product)=>{
                 total = total +  ( product.product_price*product.no_of_quantity)
                 console.log('TOTAL=====>',total)
-                // setTotalPrice( totalPrice + ( product.product_price*product.no_of_quantity)  )
               })
-              // console.log('TOTAL =>',totalPrice)
               setTotalPrice(total)
+            }
+              
             });
 
         }
     },[])
 
-    const handleRemoveItem = (product_name) => {
+    const handleRemoveItem = (product_name,product_price,no_of_quantity) => {
       const  CurrentUser = firebase.auth().currentUser;
+      setTotalPrice( totalPrice-(product_price*no_of_quantity) )
       firebase.database().ref(`Users/${CurrentUser.uid}/Cart/${product_name}`).remove();
     }
 
@@ -77,7 +80,7 @@ const [totalPrice,setTotalPrice] = useState(0)
                       <input type='number' value={product.no_of_quantity}  style={{width:'3vw',marginLeft:'1%',marginRight:'1%'}}/>
                       {/* <button className='btn btn-danger'>-</button> */}
                     </td>
-                    <td className="border-0 align-middle" onClick={() => handleRemoveItem(product.product_name)}><DeleteIcon /></td>
+                    <td className="border-0 align-middle" onClick={() => handleRemoveItem(product.product_name,product.product_price,product.no_of_quantity)}><DeleteIcon /></td>
                 </tr>
                 ))}</>: 
                <tr>
