@@ -102,7 +102,6 @@ function Header() {
     }
      return(
         <div className='header-body'>
-            {/* collapseOnSelect */}
             <Navbar fixed='top' expand="md" expanded={navExpanded} onToggle={checkExapnd}  className={navBar ? 'navbar active' : 'navbar'}>
                 <Brand  href="#Home">Gajanand Clock</Brand>
                 <Toggle  aria-controls="responsive-navbar-nav" />
@@ -116,24 +115,25 @@ function Header() {
                         <Nav>
                         <Link onSelect={checkExapnd} onClick={AddClock} href="/AddClockImages">Add Product</Link>
                         <Link onSelect={checkExapnd} onClick={handleOrderedEvent} href="#">Orders</Link>
-                        {/* <Link onSelect={checkExapnd} onClick={AddFrame} href="/AddFrameImages">Add Frame</Link> */}
                         </Nav>
                         :
                          null
                         }
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
-                        { isLogin && (isAdmin!==true && webStorageAdmin!==true) ?
-                            <> 
+                        { (isAdmin!==true && webStorageAdmin!==true) ?
                             <Link onSelect={checkExapnd} onClick={handleProductHistoryEvent} href="#">Product History</Link>
-                            <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link>
-                             <div className='nav justify-content-end' onClick={GoToCart}>
-                                <ShoppingCartSharpIcon />              
-                             </div>
-                                                
-                            </>
                         :
-                            <Link onSelect={checkExapnd} onClick={goToLogin}>Login</Link>
+                            null
+                        }
+                        {isLogin 
+                        ? <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link> 
+                        : <Link onSelect={checkExapnd} onClick={goToLogin}>Login</Link>}
+                        {(isAdmin!==true && webStorageAdmin!==true) ?
+                                <div className='' onClick={GoToCart}>
+                                        <ShoppingCartSharpIcon /> 
+                                </div>
+                            : null
                         }
                     </Nav>
                 </Collapse>
