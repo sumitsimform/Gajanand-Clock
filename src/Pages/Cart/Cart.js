@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import DeleteIcon from '@material-ui/icons/Delete'
 import firebase from '../../Components/Firebase'
+import Swal from 'sweetalert2';
 export default function Cart() {
 const [data,setData] = useState([])
 const [totalPrice,setTotalPrice] = useState(0)
@@ -31,6 +32,61 @@ const [totalPrice,setTotalPrice] = useState(0)
       const  CurrentUser = firebase.auth().currentUser;
       setTotalPrice( totalPrice-(product_price*no_of_quantity) )
       firebase.database().ref(`Users/${CurrentUser.uid}/Cart/${product_name}`).remove();
+    }
+
+    const handleCheckoutEvent = (data) => {
+      const  CurrentUser = firebase.auth().currentUser;
+      Object.values(data).map((product)=>{
+        console.log('==>CLOCK',product)
+        Object.assign(product,{status:'Order Pending'})
+        console.log('Product DETAILS ===>',CurrentUser.uid)
+          if(CurrentUser){
+          firebase.database().ref(`Users/${CurrentUser.uid}/History/${product.product_name}`).update({
+              product_name:product.product_name,
+              product_detail:product.product_detail,
+              product_price:product.product_price,
+              img_URL:product.img_URL,
+              no_of_quantity:product.no_of_quantity,
+              Status:product.status
+          }).then(()=>{
+              Swal.fire(
+                  'Add Product',
+                  'Your Order SuccessFul Send...',
+                  'success'
+                ).then(()=>{
+                  firebase.database().ref(`Users/${CurrentUser.uid}/Cart`).remove();
+                })
+          }).catch((error)=>{
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: `${error}`,
+              })
+          })
+
+          firebase.database().ref(`Users/XryKr3kHIdYbl8dmwccR23wmdop1/Orders/${product.product_name}`).update({
+            product_name:product.product_name,
+            product_detail:product.product_detail, 
+            product_price:product.product_price,
+            img_URL:product.img_URL,
+            no_of_quantity:product.no_of_quantity,
+            Status:product.status,
+            user_id:CurrentUser.uid
+
+        }).catch((error)=>{
+          console.log('ERROR : ',error)
+        })
+      }else{
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Login Or SignUp Your Account...',
+              footer: '<a href=/login>Login&nbsp</a><label>&nbspor&nbsp</label><a href=/signUp>Sign-up</a>&nbspaccount?',
+            })
+      }
+      })
+      // console.log("CHECKOUT DATA=>",data,)
+      
     }
 
     return (
@@ -77,7 +133,7 @@ const [totalPrice,setTotalPrice] = useState(0)
                     <td className="border-0 align-middle"><strong>₹{product.product_price}</strong></td>
                     <td className="border-0 align-middle">
                       {/* <button className="btn btn-primary">+</button> */}
-                      <input type='number' value={product.no_of_quantity}  style={{width:'3vw',marginLeft:'1%',marginRight:'1%'}}/>
+                      <input type='number' value={product.no_of_quantity}  style={{width:'4vw',marginLeft:'1%',marginRight:'1%'}}/>
                       {/* <button className='btn btn-danger'>-</button> */}
                     </td>
                     <td className="border-0 align-middle" onClick={() => handleRemoveItem(product.product_name,product.product_price,product.no_of_quantity)}><DeleteIcon /></td>
@@ -120,12 +176,11 @@ const [totalPrice,setTotalPrice] = useState(0)
             <p className="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
             <ul className="list-unstyled mb-4">
               <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong><strong>₹{totalPrice}</strong></li>
-              <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-              {/* <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Tax</strong><strong>$0.00</strong></li> */}
+              <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong>₹00.00</strong></li>
               <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
-                <h5 className="font-weight-bold">$400.00</h5>
+                <h5 className="font-weight-bold">₹{totalPrice}</h5>
               </li>
-            </ul><a href="#" className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+            </ul><button onClick={()=>handleCheckoutEvent(data)} disabled={totalPrice? false : true} className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</button>
           </div>
         </div>
       </div>

@@ -29,7 +29,6 @@ function Content(props) {
             <section id='ShowClockImages'>
                 <ShowClockImages />
             </section>
-            
             <section id='ShowFrameImages'>
                 <ShowFrameImages />
             </section> 

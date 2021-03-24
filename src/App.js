@@ -13,6 +13,8 @@ import Header from './Components/Header/Header'
 const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/UserStatus'));
 const Contact = React.lazy(() => import('./Pages/content/content'));
 const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
+const ProductHistory = React.lazy(() => import('./Pages/UserProductHistory/ProductHistory'));
+const AdminOrder = React.lazy(() => import('./Pages/AdminGetOrder/AdminOrder'));
 const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
 const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
 const EditProductDetails = React.lazy(() => import('./Pages/EditProductDetails/EditProductDetails'));
@@ -41,6 +43,12 @@ class App extends React.Component{
             </Route>
             <Route  path="/Cart">
                 <Cart  />
+            </Route>
+            <Route  path="/AdminOrder">
+                <AdminOrder  />
+            </Route>
+            <Route  path="/ProductHistory">
+                <ProductHistory  />
             </Route>
             <Route  path="/AddClockImages">
                 <AddClockPhoto  />

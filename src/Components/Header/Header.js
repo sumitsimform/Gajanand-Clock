@@ -90,6 +90,13 @@ function Header() {
     const AddClock = () => {
         history.push({pathname:'/AddClockImages'});
     }
+    const handleProductHistoryEvent = () => {
+        history.push({pathname:'/ProductHistory'});
+    }
+    const handleOrderedEvent = () => {
+        history.push({pathname:'/AdminOrder'});
+    }
+    
     const AddFrame = () => {
         history.push({pathname:'/AddFrameImages'});
     }
@@ -108,6 +115,7 @@ function Header() {
                         ?
                         <Nav>
                         <Link onSelect={checkExapnd} onClick={AddClock} href="/AddClockImages">Add Product</Link>
+                        <Link onSelect={checkExapnd} onClick={handleOrderedEvent} href="#">Orders</Link>
                         {/* <Link onSelect={checkExapnd} onClick={AddFrame} href="/AddFrameImages">Add Frame</Link> */}
                         </Nav>
                         :
@@ -115,12 +123,13 @@ function Header() {
                         }
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
-                        { isLogin  ?
+                        { isLogin && (isAdmin!==true && webStorageAdmin!==true) ?
                             <> 
+                            <Link onSelect={checkExapnd} onClick={handleProductHistoryEvent} href="#">Product History</Link>
                             <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link>
-                             <div className='nav justify-content-end'>
-                             <Link onSelect={checkExapnd} onClick={GoToCart} href="/cart"><ShoppingCartSharpIcon /></Link>
-                            </div>
+                             <div className='nav justify-content-end' onClick={GoToCart}>
+                                <ShoppingCartSharpIcon />              
+                             </div>
                                                 
                             </>
                         :
