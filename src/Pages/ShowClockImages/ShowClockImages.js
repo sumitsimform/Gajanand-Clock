@@ -5,15 +5,16 @@ import {Button} from 'react-bootstrap';
 import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import history from '../../Components/History'
+import Card from '../../Components/Card'
 function ShowClockImages() {
 
 
-    const [numOfImg,setNumOfImg] = useState(5);
+    const [numOfImg,setNumOfImg] = useState(4);
     const { docs } = useStore('Clock');
 
 
     const ShowMoreImg = () => {
-        setNumOfImg(numOfImg+2);
+        setNumOfImg(numOfImg+4);
     }
 
     return(
@@ -24,41 +25,43 @@ function ShowClockImages() {
             <div className='show-clock-tag'>
                 <div className='clock-img-grid'>
                     { docs && docs.slice(0,numOfImg).map(doc => (
+
+                        <Card state={doc} />
                         // <div className='img-wrap' key={doc.id}>
                         //     <img src={doc.url} alt='uploaded pic' />
                         // </div>
-                        <div className="card_layout"  key={doc.id}>
-                            {
-                                console.log('id===>',doc)
-                            }
-                            <div className="card__inner">
-                                <div className="card__face card__face--front ">
-                                    <img src={doc.url} alt='uploaded pic' />
-                                    {/* <img src="./logo192.png" alt="" className="pp" /> */}
-                                </div>
-                                <div className="card__face card__face--back">
-                                    <div className="card__content">
-                                        <div className="card__header">
-                                            <img src={doc.url} alt='uploaded pic' />
-                                            {/* <img src="./logo192.png" alt="" className="pp" /> */}
-                                            {/* <h2>Tyler Potts</h2> */}
-                                        </div>
-                                        <div className="card__body">
-                                            <h3>Clock Number</h3>
-                                            <button className='btn btn-primary' style={{width:'100%'}} 
-                                                onClick={
-                                                    ()=>{
-                                                        console.log('PROPS SEND=>',doc)
-                                                        history.push({
-                                                            pathname:'/EditProductDetails',
-                                                            state:{doc}
-                                                        })
-                                                    }}>ADD TO CART</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        // <div className="card_layout"  key={doc.id}>
+                        //     {
+                        //         console.log('id===>',doc)
+                        //     }
+                        //     <div className="card__inner">
+                        //         <div className="card__face card__face--front ">
+                        //             <img src={doc.url} alt='uploaded pic' />
+                        //             {/* <img src="./logo192.png" alt="" className="pp" /> */}
+                        //         </div>
+                        //         <div className="card__face card__face--back">
+                        //             <div className="card__content">
+                        //                 <div className="card__header">
+                        //                     <img src={doc.url} alt='uploaded pic' />
+                        //                     {/* <img src="./logo192.png" alt="" className="pp" /> */}
+                        //                     {/* <h2>Tyler Potts</h2> */}
+                        //                 </div>
+                        //                 <div className="card__body">
+                        //                     <h3>Clock Number</h3>
+                        //                     <button className='btn btn-primary' style={{width:'100%'}} 
+                        //                         onClick={
+                        //                             ()=>{
+                        //                                 console.log('PROPS SEND=>',doc)
+                        //                                 history.push({
+                        //                                     pathname:'/EditProductDetails',
+                        //                                     state:{doc}
+                        //                                 })
+                        //                             }}>ADD TO CART</button>
+                        //                 </div>
+                        //             </div>
+                        //         </div>
+                        //     </div>
+                        // </div>
                 ))}
                 </div>
                 { isLoading  && <LoaderModel text='Photo loading...'  /> }

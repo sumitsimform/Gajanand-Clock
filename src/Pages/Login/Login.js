@@ -34,9 +34,9 @@ const Login = () => {
                         'Successful Login...',
                         'success'
                       ).then(()=>{
-                        if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
+                        // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
                             dispatch(setLogin());    
-                        }  
+                        // }  
                         history.push({pathname:'/home'});
                       })
                 }
@@ -76,7 +76,7 @@ const Login = () => {
                         <FormLabel className='label-css'>Password</FormLabel>
                         <FormControl onChange={(e)=> setPass(e.target.value)} type="password" size='lg' placeholder="Password" />
                     </div>
-                    <div className='inputTag'>
+                    <div className='inputTag' style={{marginTop:'4%'}}>
                         <Button variant="contained" fullWidth={true} color="primary" onClick={submitLogin}>
                             SIGN IN
                         </Button>

@@ -245,7 +245,7 @@ body {
 }
 @media screen and (min-width: 1200px) {
   .clock-img-grid{
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
 }
 .card_layout {
   width: 25vw;
