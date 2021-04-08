@@ -9,6 +9,8 @@ export default function Cart() {
 // let Quantity=0
 const { id } = useParams();
 const [data,setData] = useState([])
+
+
 const [isAddress,setIsAddress] = useState(false)
 const [isUpdateAddress,setIsUpdateAddress] = useState(false)
 const [address,setAddress] = useState([])
